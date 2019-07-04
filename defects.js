@@ -1,3 +1,4 @@
+function defects(){
 var from = null;
 var to = null;
 
@@ -15,4 +16,5 @@ if(field('До') === 'ТП'){
   to = 'до ж/д ' + field('до ж/д')[0].field('до ж/д');
 }
 
-from + " " + to
+ return from + " " + to
+}
