@@ -1,9 +1,9 @@
 var equipmentType = field("Тип оборудования");
-var equipment = null;
-var equipmentMark = null;
-var from = null;
-var to = null;
-var defectiveEquipment = null;
+var equipment = '';
+var equipmentMark = '';
+var from = '';
+var to = '';
+var defectiveEquipment = '';
 
 switch(equipmentType){
   case "Насос":
