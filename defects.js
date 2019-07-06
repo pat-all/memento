@@ -34,7 +34,7 @@ switch(equipmentType){
       } else if(field('До') === 'ТК'){
       to = ' - ТК ' + field('до ТК')[0].field('#ТК');
       } else if(field('До') === 'ж/д'){
-      to = ' - ж/д ' + field('до ж/д')[0].field('до ж/д');
+      to = ' - ж/д ' + field('до ж/д')[0].field('Адрес');
       }
     }
     
