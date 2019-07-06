@@ -14,14 +14,14 @@ switch(equipmentType){
     }
     equipmentMark = equipment.field("Маркировка");
     from = equipment.field("Teпловой пункт")[0].field("Адрес");
-    defect = from + ": " + equipmentMark;
+    defectiveEquipment = from + ": " + equipmentMark;
     break;
   case "Трубопровод":
     if(field('От') === 'ТП' || field('От') === 'в ТП'){
       from = 'ТП ' + field('от ТП')[0].field('Адрес');
     } else if(field('От') === 'ТК' || field('От') === 'в ТК'){
       from = 'ТК ' + field('от ТК')[0].field('#ТК');
-    } else if(field('От' === "в ж/д"){
+    } else if(field('От' === "в ж/д")){
       from = "ж/д " + field('в ж/д')[0].field('Адрес');
     }
     if(field('От') === 'ТП' || field('От') === 'ТК'){
