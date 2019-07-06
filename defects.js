@@ -9,7 +9,7 @@ var adress = '';
 switch(equipmentType){
   case "Насос":
   case "Теплообменник":
-    equipment = field(equipmentType);
+    equipment = field(equipmentType)[0];
     equipmentMark = equipment.field("Маркировка");
     adress = equipment.field("Адрес ТП");
     defectiveEquipment = adress + ": " + equipmentMark;
