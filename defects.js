@@ -6,13 +6,13 @@ var defectiveEquipment = null;
 
 switch(equipmentType){
   case "Насос":
-    equipment = field(equipmentType)[0].field("Маркировка");
-    from = field(equipmentType)[0].field("Teпловой пункт")[0].field("Адрес");
-    defectiveEquipment = from + ": " + equipment;
-    break;
   case "Теплообменник":
-    equipment = field(equipmentType)[0].field("Маркировка");
-    from = field(equipmentType)[0].field("Teпловой пункт")[0].field("Адрес");
+    equipment = field(equipmentType);
+    if(Array.isArray(equipment){
+       equipment = field(equipmentType)[0]
+    }
+    equipmentMark = equipment.field("Маркировка");
+    from = equipment.field("Teпловой пункт")[0].field("Адрес");
     defect = from + ": " + equipment;
     break;
   case "Трубопровод":
