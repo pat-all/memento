@@ -4,7 +4,7 @@ var equipmentMark = '';
 var from = '';
 var to = '';
 var defectiveEquipment = '';
-var location = '';
+var adress = '';
 
 switch(equipmentType){
   case "Насос":
@@ -14,12 +14,11 @@ switch(equipmentType){
        equipment = field(equipmentType)[0]
     }
     equipmentMark = equipment.field("Маркировка");
-    from = equipment.field("Teпловой пункт");
-    if(Array.isArray(from)){
-      from = from[0]
-    }
-    location = from.field("Адрес");
-    defectiveEquipment = location + ": " + equipmentMark;
+    if(Array.isArray(equipment.field("Teпловой пункт")){
+      from = equipment.field("Teпловой пункт")[0];
+    } else {from = equipment.field("Teпловой пункт")}
+    adress = from.field("Адрес");
+    defectiveEquipment = adress + ": " + equipmentMark;
     break;
   case "Трубопровод":
     if(field('От') === 'ТП' || field('От') === 'в ТП'){
