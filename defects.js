@@ -9,7 +9,7 @@ switch(equipmentType){
   case "Насос":
   case "Теплообменник":
     equipment = field(equipmentType);
-    if(Array.isArray(equipment){
+    if(Array.isArray(equipment)){
        equipment = field(equipmentType)[0]
     }
     equipmentMark = equipment.field("Маркировка");
