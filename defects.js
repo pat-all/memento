@@ -10,14 +10,8 @@ switch(equipmentType){
   case "Насос":
   case "Теплообменник":
     equipment = field(equipmentType);
-    if(Array.isArray(field(equipmentType))){
-       equipment = field(equipmentType)[0];
-    } else { equipment = field(equipmentType); }
     equipmentMark = equipment.field("Маркировка");
-    if(Array.isArray(equipment.field("Teпловой пункт"))){
-      from = equipment.field("Teпловой пункт")[0];
-    } else {from = equipment.field("Teпловой пункт")}
-    adress = from.field("Адрес");
+    adress = equipment.field("Адрес ТП");
     defectiveEquipment = adress + ": " + equipmentMark;
     break;
   case "Трубопровод":
