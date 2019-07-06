@@ -1,5 +1,6 @@
 var equipmentType = field("Тип оборудования");
 var equipment = null;
+var equipmentMark = null;
 var from = null;
 var to = null;
 var defectiveEquipment = null;
@@ -13,7 +14,7 @@ switch(equipmentType){
     }
     equipmentMark = equipment.field("Маркировка");
     from = equipment.field("Teпловой пункт")[0].field("Адрес");
-    defect = from + ": " + equipment;
+    defect = from + ": " + equipmentMark;
     break;
   case "Трубопровод":
     if(field('От') === 'ТП'){
