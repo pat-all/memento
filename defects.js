@@ -14,7 +14,7 @@ switch(equipmentType){
        equipment = field(equipmentType)[0];
     } else { equipment = field(equipmentType); }
     equipmentMark = equipment.field("Маркировка");
-    if(Array.isArray(equipment.field("Teпловой пункт")){
+    if(Array.isArray(equipment.field("Teпловой пункт"))){
       from = equipment.field("Teпловой пункт")[0];
     } else {from = equipment.field("Teпловой пункт")}
     adress = from.field("Адрес");
