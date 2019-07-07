@@ -1,11 +1,6 @@
 var equipmentType = field("Тип оборудования");
 var defects = "";
 var pipeTypes = [];
-var heatPipes = [];
-var hotWaterPipes = [];
-var coldWaterPipes = [];
-var defArr = [];
-var equipment = "";
 
 switch(equipmentType){
   case "Насос":
@@ -15,19 +10,13 @@ switch(equipmentType){
     defects = field("Дефекты теплообменника").toString();
     break;
   case "Трубопровод":
+    defects = "Тр/п: ";
     pipeTypes = field("Тип трубопровода");
     for(var i = 0; i < pipeTypes.length; i++){
-      if(pipeTypes[i] === "ЦО"){
-      defects = "ЦО:"
-      heatPipes = field("Тр/п ЦО");
-        for(var hP = 0; hP < heatPipes.length; hP++){
-          if(hP > 0){
-            defects = defects + ", " + heatPipes[hP];
-          } else {
-            defects = defects + heatPipes[hP];
-          }
-          
-        }
+      if(i > 0){
+        defects = defects + ", " + pipeTypes[i];
+      } else {
+        defects = pipeTypes[i];
       }
     }
     break;
