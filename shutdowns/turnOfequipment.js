@@ -10,20 +10,22 @@ var result = "";
 var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
 
-if(field("ТП") !== null){
-    adtessTP = entry().field("ТП")[0].field("Адрес");
+if(entry().field("ТП") !== null){
+    adressTP = entry().field("ТП")[0].field("Адрес");
 }
 
 function equipment(equpType){
     switch(equpType){
         case "Система":
             systema = "ГВС";
-            pumps = pumpLib.find(adressTP).filter(function(pump){pump.field("Группа") === "НЦ-ГВС"});
+            pumps = pumpLib.find(adressTP);            
             for(var i = 0; i < pumps.length; i++){
-                if(i === 0){
-                    result = result + pumps[0]
-                } else {
-                    result = result + ', ' + pumps[i];
+                if(pumps[i].field('Система') === systema){
+                    if(i === 0){
+                        result = result + pumps[0]
+                    } else {
+                        result = result + ', ' + pumps[i];
+                    }
                 }
             }
             break;
