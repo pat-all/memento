@@ -1,3 +1,7 @@
+/**
+ * Определяем дефект в зависимости от оборудования
+ */
+
 var equipmentType = field("Тип оборудования");
 var defects = "";
 var pipeTypes = [];

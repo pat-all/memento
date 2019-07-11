@@ -1,3 +1,7 @@
+/**
+ * Определяем тип оборудования с дефектом
+ */
+
 var equipmentType = field("Тип оборудования");
 var equipment = '';
 var equipmentMark = '';
