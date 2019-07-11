@@ -36,4 +36,4 @@ function equipment(equpType){
     }
 }
 
-result
+entry().set("Отключенное", result);
