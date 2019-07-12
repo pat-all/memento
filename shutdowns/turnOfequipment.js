@@ -2,21 +2,13 @@
  * формируем список оключенного оборудования и/или потребителей
  */
 var equpTypes = entry().field("Оборудование");
-
 var adressTP = "";
-
 var system = "";
-
 var resultPumps = [];
-
 var resultCustomers = [];
-
 var resultSystems = "";
-
 var result = "";
-
 var pumpLib = libByName("Насосы");
-
 var customerLib = libByName("Потребители");
 
 function turnedOffPumps(system) {
@@ -26,11 +18,9 @@ function turnedOffPumps(system) {
     if (pumps[i].field("Группа") === system) {
       if (result.length === 0) {
         result = result + pumps[i].field("Маркировка");
-
         resultPumps.push(pumps[i]);
       } else {
         result = result + ", " + pumps[i].field("Маркировка");
-
         resultPumps.push(pumps[i]);
       }
     }
@@ -70,40 +60,27 @@ function equipment(equpType) {
         switch (system) {
           case "ГВС":
             turnedOffSystems(system);
-
             turnedOffPumps("НЦ-ГВС");
-
             turnedOffPumps("ПЦН");
-
             turnedOffCustomers();
-
             break;
 
           case "ХВС":
             turnedOffSystems(system);
-
             turnedOffPumps("ПХН");
-
             turnedOffCustomers();
-
             break;
 
           case "ЦО Зависимая":
             turnedOffSystems(system);
-
             turnedOffCustomers();
-
             break;
 
           case "ЦО Независимая":
             turnedOffSystems(system);
-
             turnedOffPumps("НЦО");
-
             turnedOffPumps("НПО");
-
             turnedOffCustomers();
-
             break;
 
           default:
@@ -115,7 +92,6 @@ function equipment(equpType) {
 
     case "Насос":
       turnedOffCustomers();
-
       break;
 
     case "Потребитель":
@@ -126,7 +102,6 @@ function equipment(equpType) {
       }
 
       resultCustomers = entry().field("Потребители");
-
       break;
 
     default:
@@ -135,9 +110,7 @@ function equipment(equpType) {
 }
 
 for (let i = 0; i < equpTypes.length; i++) {
-  const equpType = equpTypes[i];
-
-  equipment(equpType);
+  equipment(equpTypes[i]);
 }
 
 entry().set("Насосы", resultPumps);
