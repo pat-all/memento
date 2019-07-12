@@ -12,11 +12,6 @@ var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
 
 function turnedOffPumps(system){
-    if(resultSystems.length === 0){
-        resultSystems = resultSystems + system;
-    } else {
-        resultSystems = resultSystems + ", " + system;
-    }
     var pumps = pumpLib.find(adressTP);            
             for(var i = 0; i < pumps.length; i++){
                 if(pumps[i].field('Группа') === system){
@@ -37,6 +32,14 @@ function turnedOffCustomers() {
     resultCustomers = customers;
 }
 
+function turnedOffSystems(system){
+    if(resultSystems.length === 0){
+        resultSystems = resultSystems + system;
+    } else {
+        resultSystems = resultSystems + ", " + system;
+    }
+}
+
 if(entry().field("ТП") !== null){
     adressTP = entry().field("ТП")[0].field("Адрес");
 }
@@ -50,18 +53,22 @@ function equipment(equpType){
                 system = systems[i];
                 switch (system) {
                     case "ГВС":
+                        turnedOffSystems(system);
                         turnedOffPumps("НЦ-ГВС");
                         turnedOffPumps("ПЦН");
                         turnedOffCustomers();
                         break;
                     case "ХВС":
+                        turnedOffSystems(system);
                         turnedOffPumps("ПХН");
                         turnedOffCustomers();
                         break;
                     case "ЦО Зависимая":
+                        turnedOffSystems(system);
                         turnedOffCustomers();
                         break;
                     case "ЦО Независимая":
+                        turnedOffSystems(system);
                         turnedOffPumps("НЦО");
                         turnedOffPumps("НПО");
                         turnedOffCustomers();
