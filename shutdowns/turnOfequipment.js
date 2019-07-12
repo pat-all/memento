@@ -81,7 +81,11 @@ function equipment(equpType){
     }
 }
 
-equipment(equpTypes[0]);
+for (let i = 0; i < equpTypes.length; i++) {
+    const equpType = equpTypes[i];
+    equipment(equpType);
+}
+
 
 entry().set("Отключенное", "Потебителей: " + resultCustomers.length +  "\nСистемы: " + resultSystems);
 entry().set("Насосы", resultPumps);
