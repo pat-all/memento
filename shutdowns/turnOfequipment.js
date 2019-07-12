@@ -12,18 +12,27 @@ var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
 
 function turnedOffPumps(system){
-    var pumps = pumpLib.find(adressTP);            
-            for(var i = 0; i < pumps.length; i++){
-                if(pumps[i].field('Группа') === system){
-                    if(result.length === 0){
-                        result = result + pumps[i].field("Маркировка");
-                        resultPumps.push(pumps[i]);
-                    } else {
-                        result = result + ', ' + pumps[i].field("Маркировка");
-                        resultPumps.push(pumps[i]);
-                    }
-                }
+    var pumps = pumpLib.find(adressTP);
+    pumps.sort(function(a, b){
+        if(a.field("Позиция") > b.field("Позиция")){
+            return 1;
+        } 
+        if(a.field("Позиция") < b.field("Позиция")){
+            return -1;
+        }
+        return 0;
+    });            
+    for(var i = 0; i < pumps.length; i++){
+        if(pumps[i].field('Группа') === system){
+            if(result.length === 0){
+                result = result + pumps[i].field("Маркировка");
+                resultPumps.push(pumps[i]);
+            } else {
+                result = result + ', ' + pumps[i].field("Маркировка");
+                resultPumps.push(pumps[i]);
             }
+        }
+    }
     return resultPumps;
 }
 
