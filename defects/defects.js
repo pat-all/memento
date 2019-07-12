@@ -7,10 +7,10 @@ var defects = "";
 var pipeTypes = [];
 var defArr = [];
 
-function arrToString(arr){
-  var resString = '';
-  for(var i = 0; i < arr.length; i++){
-    if(i > 0){
+function arrToString(arr) {
+  var resString = "";
+  for (var i = 0; i < arr.length; i++) {
+    if (i > 0) {
       resString = resString + ", " + arr[i];
     } else {
       resString = arr[i];
@@ -19,14 +19,14 @@ function arrToString(arr){
   return resString;
 }
 
-switch(equipmentType){
+switch (equipmentType) {
   case "Насос":
     defArr = field("Дефекты насоса");
     defects = arrToString(defArr);
     break;
   case "Теплообменник":
-      defArr = field("Дефекты теплообменника");
-      defects = arrToString(defArr);
+    defArr = field("Дефекты теплообменника");
+    defects = arrToString(defArr);
     break;
   case "Трубопровод":
     defects = "Тр/п: ";
@@ -36,4 +36,4 @@ switch(equipmentType){
   default:
 }
 
-defects
+defects;
