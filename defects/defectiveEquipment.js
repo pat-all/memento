@@ -23,8 +23,8 @@ switch(equipmentType){
       from = 'ТП ' + field('от ТП')[0].field('Адрес');
     } else if(field('От') === 'ТК' || field('От') === 'в ТК'){
       from = 'ТК ' + field('от ТК')[0].field('#ТК');
-    } else if(field('От' === "в ж/д")){
-      from = "ж/д " + field('в ж/д')[0].field('Адрес');
+    } else if(field('От') === "в ж/д" || field('От') === 'от ж/д'){
+      from = "ж/д " + field('от ж/д')[0].field('Адрес');
     }
     if(field('От') === 'ТП' || field('От') === 'ТК'){
       if(field('До') === 'ТП'){
