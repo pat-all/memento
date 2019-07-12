@@ -28,7 +28,7 @@ function turnedOffPumps(system){
 }
 
 function turnedOffCustomers() {
-    var customers = customerLib.find(adressTP);
+    var customers = libByName("Потребители").find(adressTP);
     resultCustomers = customers;
 }
 
@@ -40,13 +40,12 @@ function turnedOffSystems(system){
     }
 }
 
-if(entry().field("ТП") !== null){
-    adressTP = entry().field("ТП")[0].field("Адрес");
-}
-
 function equipment(equpType){
     switch(equpType){
         case "Система":
+            if(entry().field("ТП") !== null){
+                adressTP = entry().field("ТП")[0].field("Адрес");
+            }
             var systems = entry().field("Системы");
 
             for(var i = 0; i < systems.length; i++){
@@ -82,6 +81,9 @@ function equipment(equpType){
             turnedOffCustomers();
             break;
         case "Потребитель":
+            for(var i = 0; i < systems.length; i++){
+                turnedOffSystems(systems[i]);
+            }
             break;
         default:
             break;
@@ -93,7 +95,6 @@ for (let i = 0; i < equpTypes.length; i++) {
     equipment(equpType);
 }
 
-
-entry().set("Отключенное", "Потебителей: " + resultCustomers.length +  "\nСистемы: " + resultSystems);
 entry().set("Насосы", resultPumps);
 entry().set("Потребители", resultCustomers);
+entry().set("Отключенное", "Потебителей: " + entry().field("Потребители").length +  "\nСистемы: " + resultSystems);
