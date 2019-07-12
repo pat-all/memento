@@ -6,11 +6,17 @@ var adressTP = "";
 var system = "";
 var resultPumps = [];
 var resultCustomers = [];
+var resultSystems = "";
 var result = "";
 var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
 
 function turnedOffPumps(system){
+    if(resultSystems.length === 0){
+        resultSystems = resultSystems + system;
+    } else {
+        resultSystems = resultSystems + ", " + system;
+    }
     var pumps = pumpLib.find(adressTP);            
             for(var i = 0; i < pumps.length; i++){
                 if(pumps[i].field('Группа') === system){
@@ -77,6 +83,6 @@ function equipment(equpType){
 
 equipment(equpTypes[0]);
 
-entry().set("Отключенное", "Отключено потебителей: " + resultCustomers.length);
+entry().set("Отключенное", "Потебителей: " + resultCustomers.length +  "\nСистемы: " + resultSystems);
 entry().set("Насосы", resultPumps);
 entry().set("Потребители", resultCustomers);
