@@ -79,3 +79,4 @@ equipment(equpTypes[0]);
 
 entry().set("Отключенное", "Отключено потебителей: " + resultCustomers.length);
 entry().set("Насосы", resultPumps);
+entry().set("Потребители", resultCustomers);
