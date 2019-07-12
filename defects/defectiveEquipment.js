@@ -26,7 +26,7 @@ switch(equipmentType){
     } else if(field('От') === "в ж/д" || field('От') === 'ж/д'){
       from = "ж/д " + field('ж/д')[0].field('Адрес');
     }
-    if(field('От') === 'ТП' || field('От') === 'ТК'){
+    if(field('От') === 'ТП' || field('От') === 'ТК' || field('От') === 'ж/д'){
       if(field('До') === 'ТП'){
       to = ' - ТП ' + field('до ТП')[0].field('Адрес');
       } else if(field('До') === 'ТК'){
