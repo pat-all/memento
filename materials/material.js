@@ -1,4 +1,4 @@
-var type = field("Тип");
+var material = field("Тип");
 
 var D1 = field("ДУ");
 var D2 = field("ДУ-2");
@@ -10,31 +10,30 @@ var boltThread = field("Размер резьбы");
 var quantity = field("Количество");
 var units = field("Единицы измерения");
 
-var materialType = "";
-var material = "";
+var type = "";
 
 if (D1.length > 0) {
-  materialType = D1;
+  type = D1;
 }
 
 if (D2.length > 0) {
-  materialType = D1 + "/" + D2;
+  type = D1 + "/" + D2;
 }
 
 if (plate.length > 0) {
-  materialType = plate;
+  type = plate;
 }
 
 if (electrode.length > 0) {
-  materialType = electrode;
+  type = electrode;
 }
 
 if (bearing.length > 0) {
-  materialType = bearing;
+  type = bearing;
 }
 
 if (boltThread.length > 0) {
-  materialType = boltThread;
+  type = boltThread;
 }
 
-material = type + " " + materialType + ": " + quantity + " " + units;
+material + " " + type + ": " + quantity + " " + units;
