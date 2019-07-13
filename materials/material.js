@@ -13,28 +13,28 @@ var units = field("Единицы измерения");
 var materialType = "";
 var material = "";
 
-if(D1.length > 0){
-    materialType = D1;
-} 
-
-if(D2.length > 0){
-    materialType = D1 + "/" + D2;
+if (D1.length > 0) {
+  materialType = D1;
 }
 
-if(plate.length > 0){
-    materialType = plate;
+if (D2.length > 0) {
+  materialType = D1 + "/" + D2;
 }
 
-if(electrode.length > 0){
-    materialType = electrode;
+if (plate.length > 0) {
+  materialType = plate;
 }
 
-if(bearing.length > 0){
-    materialType = bearing;
+if (electrode.length > 0) {
+  materialType = electrode;
 }
 
-if(boltThread.length > 0){
-    materialType = boltThread;
+if (bearing.length > 0) {
+  materialType = bearing;
+}
+
+if (boltThread.length > 0) {
+  materialType = boltThread;
 }
 
 material = type + " " + materialType + ": " + quantity + " " + units;
