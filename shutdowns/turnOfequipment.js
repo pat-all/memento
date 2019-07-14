@@ -1,15 +1,15 @@
 /**
  * формируем список оключенного оборудования и/или потребителей
  */
-var equpTypes = entry().field("Оборудование");
+var equpType = entry().field("Оборудование");
 var adressTP = "";
 var system = "";
 var resultPumps = [];
 var resultCustomers = [];
-var resultSystems = "";
 var result = "";
 var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
+var message = "";
 
 function turnedOffPumps(system) {
   var pumps = pumpLib.find(adressTP);
@@ -29,18 +29,18 @@ function turnedOffPumps(system) {
   return resultPumps;
 }
 
-function turnedOffCustomers() {
+function turnedOffCustomers(adressTP) {
   var customers = libByName("Потребители").find(adressTP);
 
-  resultCustomers = customers;
-}
-
-function turnedOffSystems(system) {
-  if (resultSystems.length === 0) {
-    resultSystems = resultSystems + system;
-  } else {
-    resultSystems = resultSystems + ", " + system;
-  }
+  resultCustomers = customers.sort(function(a, b) {
+    if (a.field("name") > b.field("name")) {
+      return 1;
+    }
+    if (a.field("name") < b.field("name")) {
+      return -1;
+    }
+    return 0;
+  });
 }
 
 function equipment(equpType) {
@@ -52,55 +52,42 @@ function equipment(equpType) {
           .field("name");
       }
 
-      var systems = entry().field("Системы");
+      var system = entry().field("Системы");
 
-      for (var i = 0; i < systems.length; i++) {
-        system = systems[i];
+      switch (system) {
+        case "ГВС":
+          turnedOffPumps("НЦ-ГВС");
+          turnedOffPumps("ПЦН");
+          turnedOffCustomers(adressTP);
+          break;
 
-        switch (system) {
-          case "ГВС":
-            turnedOffSystems(system);
-            turnedOffPumps("НЦ-ГВС");
-            turnedOffPumps("ПЦН");
-            turnedOffCustomers();
-            break;
+        case "ХВС":
+          turnedOffPumps("ПХН");
+          turnedOffCustomers(adressTP);
+          break;
 
-          case "ХВС":
-            turnedOffSystems(system);
-            turnedOffPumps("ПХН");
-            turnedOffCustomers();
-            break;
+        case "ЦО Зависимая":
+          turnedOffCustomers(adressTP);
+          break;
 
-          case "ЦО Зависимая":
-            turnedOffSystems(system);
-            turnedOffCustomers();
-            break;
+        case "ЦО Независимая":
+          turnedOffPumps("НЦО");
+          turnedOffPumps("НПО");
+          turnedOffCustomers(adressTP);
+          break;
 
-          case "ЦО Независимая":
-            turnedOffSystems(system);
-            turnedOffPumps("НЦО");
-            turnedOffPumps("НПО");
-            turnedOffCustomers();
-            break;
-
-          default:
-            break;
-        }
+        default:
+          break;
       }
-
       break;
 
     case "Насос":
-      turnedOffCustomers();
+      adressTP = entry().field("Насосы")[0].field("description");
+      turnedOffCustomers(adressTP);
       break;
 
     case "Потребитель":
-      var systems = entry().field("Системы");
-
-      for (var i = 0; i < systems.length; i++) {
-        turnedOffSystems(systems[i]);
-      }
-
+      var system = entry().field("Системы");
       resultCustomers = entry().field("Потребители");
       break;
 
@@ -109,18 +96,10 @@ function equipment(equpType) {
   }
 }
 
-for (let i = 0; i < equpTypes.length; i++) {
-  equipment(equpTypes[i]);
-}
+
+  
+equipment(equpType);
 
 entry().set("Насосы", resultPumps);
 
 entry().set("Потребители", resultCustomers);
-
-entry().set(
-  "Отключенное",
-  "Потебителей: " +
-    entry().field("Потребители").length +
-    "\nСистемы: " +
-    resultSystems
-);
