@@ -1,12 +1,10 @@
-var equpType = entry().field("Оборудование");
 var adressTP = "";
 var system = "";
 var resultPumps = [];
 var resultCustomers = [];
-var result = "";
+var equpType = entry().field("Оборудование");
 var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
-var message = "";
 function turnedOffPumps(group) {
   var pumps = pumpLib.find(adressTP);
   for (var i = 0; i < pumps.length; i++) {
@@ -55,7 +53,6 @@ function equipment(equpType) {
       turnedOffCustomers(adressTP);
       break;
     case "Потребитель":
-      var system = entry().field("Системы");
       resultCustomers = entry().field("Потребители");
       break;
     default:
