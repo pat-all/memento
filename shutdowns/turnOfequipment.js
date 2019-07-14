@@ -17,11 +17,10 @@ function turnedOffPumps(group) {
 function turnedOffCustomers(adressTP) {
    var customers = libByName("Потребители").entries();
    for (var i = 0; i < customers.length; i++) {
-    if (customers[i].field("ТП")[0].field("name") === adressTP) {
+    if (customers[i].field("ТП").length > 0 && customers[i].field("ТП")[0].field("name") === adressTP) {
       resultCustomers.push(customers[i]);
     }
   }
-   
 }
 function equipment(equpType) {
   switch (equpType) {
