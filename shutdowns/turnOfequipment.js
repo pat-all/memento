@@ -23,16 +23,7 @@ function turnedOffPumps(system) {
   return resultPumps;
 }
 function turnedOffCustomers(adressTP) {
-  var customers = libByName("Потребители").find(adressTP);
-  resultCustomers = customers.sort(function(a, b) {
-    if (a.field("name") > b.field("name")) {
-      return 1;
-    }
-    if (a.field("name") < b.field("name")) {
-      return -1;
-    }
-    return 0;
-  });
+  resultCustomers = libByName("Потребители").find(adressTP);
 }
 function equipment(equpType) {
   switch (equpType) {
