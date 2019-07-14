@@ -17,10 +17,10 @@ function turnedOffPumps(system) {
   for (var i = 0; i < pumps.length; i++) {
     if (pumps[i].field("Группа") === system) {
       if (result.length === 0) {
-        result = result + pumps[i].field("Маркировка");
+        result = result + pumps[i].field("name");
         resultPumps.push(pumps[i]);
       } else {
-        result = result + ", " + pumps[i].field("Маркировка");
+        result = result + ", " + pumps[i].field("name");
         resultPumps.push(pumps[i]);
       }
     }
@@ -49,7 +49,7 @@ function equipment(equpType) {
       if (entry().field("ТП") !== null) {
         adressTP = entry()
           .field("ТП")[0]
-          .field("Адрес");
+          .field("name");
       }
 
       var systems = entry().field("Системы");
