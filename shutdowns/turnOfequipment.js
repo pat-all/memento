@@ -7,17 +7,11 @@ var result = "";
 var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
 var message = "";
-function turnedOffPumps(system) {
+function turnedOffPumps(group) {
   var pumps = pumpLib.find(adressTP);
   for (var i = 0; i < pumps.length; i++) {
-    if (pumps[i].field("Группа") === system) {
-      if (result.length === 0) {
-        result = result + pumps[i].field("name");
+    if (pumps[i].field("Группа") === group) {
         resultPumps.push(pumps[i]);
-      } else {
-        result = result + ", " + pumps[i].field("name");
-        resultPumps.push(pumps[i]);
-      }
     }
   }
   return resultPumps;
