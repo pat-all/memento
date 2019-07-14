@@ -6,16 +6,22 @@ var equpType = entry().field("Оборудование");
 var pumpLib = libByName("Насосы");
 var customerLib = libByName("Потребители");
 function turnedOffPumps(group) {
-  var pumps = pumpLib.find(adressTP);
+  var pumps = pumpLib.entries();
   for (var i = 0; i < pumps.length; i++) {
-    if (pumps[i].field("Группа") === group) {
+    if (pumps[i].field("description") === adressTP && pumps[i].field("Группа") === group) {
         resultPumps.push(pumps[i]);
     }
   }
   return resultPumps;
 }
 function turnedOffCustomers(adressTP) {
-  resultCustomers = libByName("Потребители").find(adressTP);
+   var customers = libByName("Потребители").entries();
+   for (var i = 0; i < customers.length; i++) {
+    if (customers[i].field("ТП")[0].field("name") === adressTP) {
+      resultCustomers.push(customers[i]);
+    }
+  }
+   
 }
 function equipment(equpType) {
   switch (equpType) {
