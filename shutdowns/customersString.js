@@ -1,5 +1,6 @@
 var customersArr = field("Потребители");
 var customersByStreets = [];
+var result = "";
 
 function CustomersByStreet() {return { street: "", buildings: [] }}
 
@@ -23,3 +24,9 @@ for(var i = 0; i < customersArr.length; i++){
     
   }
 }
+
+for(var i = 0; i < customersByStreets.length; i++){
+  result = customersByStreets[i].street + ": " + customersByStreets[i].buildings + "; \n"
+}
+
+result
