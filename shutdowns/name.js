@@ -1,4 +1,4 @@
-var equipType = field("Оборудоваеие");
+var equipType = field("Оборудование");
 var name = "";
 var system = "";
 
@@ -12,7 +12,7 @@ switch (equipType) {
     var pump = field("Насосы")[0];
     name = pump.field("description") + ": " + pump.field("name");
     break;
-  case "Насос":
+  case "Потребитель":
     system = field("Системы");
     name = "Потребителей по: " + system;
     break;
