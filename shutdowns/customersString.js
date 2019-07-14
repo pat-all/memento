@@ -26,6 +26,15 @@ for(var i = 0; i < customersArr.length; i++){
 }
 
 for(var i = 0; i < customersByStreets.length; i++){
+  customersByStreets[i].buildings.sort(function(a, b){
+    if (a > b) {
+      return 1;
+    }
+    if (a < b) {
+      return -1;
+    }
+    return 0;
+  });
   if(i < customersByStreets.length - 1){
     result = result + customersByStreets[i].street + ": " + customersByStreets[i].buildings + "; \n"
   } else {
