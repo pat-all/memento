@@ -6,7 +6,7 @@ function CustomersByStreet() {return { street: "", buildings: [] }}
 
 for(var i = 0; i < customersArr.length; i++){
   var customerStreet = customersArr[i].field("Улица");
-  var customerNumber = customersArr[i].field("Дом") + customersArr[i].field("Литера");
+  var customerNumber = " " + customersArr[i].field("Дом") + customersArr[i].field("Литера");
   var streetMatch = false;
 
   for(var j = 0; j < customersByStreets.length; j++){
