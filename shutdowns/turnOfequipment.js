@@ -10,6 +10,15 @@ function turnedOffPumps(group) {
   for (var i = 0; i < pumps.length; i++) {
     if (pumps[i].field("description") === adressTP && pumps[i].field("Группа") === group) {
         resultPumps.push(pumps[i]);
+        resultPumps.sort(function(a, b){
+          if(a.field("name") > b.field("name")){
+            return 1;
+          }
+          if(a.field("name") < b.field("name")){
+            return -1;
+          }
+          return 0;
+        });
     }
   }
   return resultPumps;
