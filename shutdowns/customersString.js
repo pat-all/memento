@@ -26,7 +26,12 @@ for(var i = 0; i < customersArr.length; i++){
 }
 
 for(var i = 0; i < customersByStreets.length; i++){
-  result = customersByStreets[i].street + ": " + customersByStreets[i].buildings + "; \n"
+  if(i < customersByStreets.length - 1){
+    result = result + customersByStreets[i].street + ": " + customersByStreets[i].buildings + "; \n"
+  } else {
+    result = result + customersByStreets[i].street + ": " + customersByStreets[i].buildings + "."
+  }
+    
 }
 
 result
