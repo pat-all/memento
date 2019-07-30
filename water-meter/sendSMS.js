@@ -18,19 +18,19 @@ function meterReadingsList(type) {
   for (var i = 0; i < waterMeters.length; i++) {
     var waterMeter = waterMeters[i];
     if (waterMeter.field("Тип") === type) {
+      var meterReadings = waterMeter.field("Показания");
       var meterReadingDate = meterReadings[meterReadings.length - 1].field(
         "Дата"
       );
       var adress = waterMeter.field("Тепловой пункт")[0].field("name");
       if (checkYYYYMM(meterReadingDate)) {
-        var meterReadings = waterMeter.field("Показания");
         var meterReading = meterReadings[meterReadings.length - 1].field(
           "Показания"
         );
         list = list + "\n" + adress + ": " + meterReading;
       } else {
         err = true;
-        errMsg = "\n" + adress + ": " + type;
+        errMsg = errMsg + "\n" + adress + ": " + type;
       }
     }
   }
