@@ -12,4 +12,7 @@ for (var i = 0; i < waterMeters.length; i++) {
   }
 }
 
-message(msg);
+i = intent("android.intent.action.SENDTO");
+i.data("smsto:" + "0677987304");
+i.extra("sms_body" , msg);  
+i.send();
