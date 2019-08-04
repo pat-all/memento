@@ -33,9 +33,9 @@ function summSquare(surface, action, square){
 
 for (var index = 0; index < fragments.length; index++) {
   var fragment = fragments[index];
-  var surface = field("Покрытие");
-  var action = field("Действие");
-  var square = field("S");
+  var surface = fragment.field("Покрытие");
+  var action = fragment.field("Действие");
+  var square = fragment.field("S");
   switch (surface) {
     case "Двор":
       courtyardSquare = summSquare(courtyardSquare, action, square);
