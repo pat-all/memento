@@ -11,7 +11,7 @@ function roundNum(num, x){
   return result;
 }
 
-for (let index = 0; index < fragments.length; index++) {
+for (var index = 0; index < fragments.length; index++) {
   const fragment = fragments[index];
   if(fragment.field("Действие") === "Суммировать"){
     totalSquare = totalSquare + Number(fragment.field("S"));
