@@ -58,11 +58,11 @@ if(courtyardSquare > 0){
 }
 if(sidewalkSquare > 0){
   var sidewalkSquareStr = "Sтротуар = " + roundNum(sidewalkSquare, x);
-  resultStr = resultingStr(resultStr, sidewalkSquare);
+  resultStr = resultingStr(resultStr, sidewalkSquareStr);
 }
 if(highwaySquare > 0){
-  var courtyardSquareStr = "Sшоссе = " + roundNum(highwaySquare, x);
-  resultStr = resultingStr(resultStr, courtyardSquareStr);
+  var highwaySquareStr = "Sшоссе = " + roundNum(highwaySquare, x);
+  resultStr = resultingStr(resultStr, highwaySquareStr);
 }
 
 resultStr;
