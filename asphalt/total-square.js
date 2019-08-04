@@ -1,6 +1,15 @@
 var fragments = field("Фрагменты");
 var amendment = field("Поправка");
+var x = field("Знаков после запятой");
 var totalSquare = 0;
+
+function roundNum(num, x){
+  var mult = Math.pow(10, x);
+  var result = num * mult;
+  result = Math.round(result);
+  result = result / mult;
+  return result;
+}
 
 for (let index = 0; index < fragments.length; index++) {
   const fragment = fragments[index];
@@ -11,4 +20,8 @@ for (let index = 0; index < fragments.length; index++) {
   }
 }
 
-totalSquare + amendment;
+if(amendment.length > 0){
+  totalSquare = totalSquare + amendment;
+}
+
+roundNum(totalSquare, x);
