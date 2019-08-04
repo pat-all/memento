@@ -53,15 +53,15 @@ for (var index = 0; index < fragments.length; index++) {
 }
 
 if(courtyardSquare > 0){
-  courtyardSquareStr += "Sдвор = " + roundNum(courtyardSquare, x);
+  var courtyardSquareStr = "Sдвор = " + roundNum(courtyardSquare, x);
   resultStr = resultingStr(resultStr, courtyardSquareStr);
 }
 if(sidewalkSquare > 0){
-  sidewalkSquare += "Sтротуар = " + roundNum(sidewalkSquare, x);
-  resultStr = resultingStr(resultStr, courtyardSquareStr);
+  var sidewalkSquareStr = "Sтротуар = " + roundNum(sidewalkSquare, x);
+  resultStr = resultingStr(resultStr, sidewalkSquare);
 }
 if(highwaySquare > 0){
-  courtyardSquareStr += "Sшоссе = " + roundNum(highwaySquare, x);
+  var courtyardSquareStr = "Sшоссе = " + roundNum(highwaySquare, x);
   resultStr = resultingStr(resultStr, courtyardSquareStr);
 }
 
