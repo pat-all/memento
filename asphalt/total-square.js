@@ -14,9 +14,9 @@ function roundNum(num, x){
 for (var index = 0; index < fragments.length; index++) {
   var fragment = fragments[index];
   if(fragment.field("Действие") === "Суммировать"){
-    totalSquare = totalSquare + Number(fragment.field("S"));
+    totalSquare += Number(fragment.field("S"));
   } else if (fragment.field("Действие") === "Отнять"){
-    totalSquare = totalSquare - Number(fragment.field("S"));
+    totalSquare -= Number(fragment.field("S"));
   }
 }
 
