@@ -20,7 +20,7 @@ for (let index = 0; index < fragments.length; index++) {
   }
 }
 
-if(amendment.length > 0){
+if(amendment !== null){
   totalSquare = totalSquare + amendment;
 }
 
