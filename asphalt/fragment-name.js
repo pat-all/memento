@@ -4,7 +4,7 @@ var name = "";
 
 switch (figure) {
   case "Прямоугольник":
-    name = "S \u2B1C = " + S;
+    name = "S \u25A0 = " + S;
     break;
   case "Треугольник":
     name = "S \u25B2 = " + S;
