@@ -16,17 +16,17 @@ function roundNum(num, x){
 
 function resultingStr(resultStr, str){
   if(resultStr.length > 0){
-    return resultStr += "\n" + str;
+    return resultStr + "\n" + str;
   } else {
-    return resultStr += str;
+    return resultStr + str;
   }
 };
 
 function summSquare(surface, action, square){
   if(action === "Суммировать"){
-    surface += square;
+    surface = surface + square;
   } else if (action === "Отнять"){
-    surface -= square;
+    surface = surface - square;
   }
   return surface;
 }
