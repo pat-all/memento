@@ -4,7 +4,7 @@ var pumpsField = "Насосы";
 var defectsType = "Дефекты";
 
 var pumpsStatus = [
-  {type: "Монтировать насосы", status: "Не смонтирован после ремонта"},
+  {type: "Монтировать насосы", status: "Не монтирован после ремонта"},
   {type: "Насосы на склад", status: "Демонтирован для ремонта"},
 ];
 
@@ -38,7 +38,6 @@ function getToDoByType(type){
 }
 
 function checkDefects(){
-  checkForTodoByType(defectsType);
   var todoDefects = [];
   for(var i = 0; i < defects.length; i++){
     var defect = defects[i];
@@ -46,11 +45,13 @@ function checkDefects(){
       todoDefects.push(defect);
     }
   }
-  getToDoByType(defectsType).set(defectsField, todoDefects);
+  if(todoDefects.length > 0){
+    checkForTodoByType(defectsType);
+    getToDoByType(defectsType).set(defectsField, todoDefects);
+  }
 }
 
 function pumpsToInstall(type, status){
-  checkForTodoByType(type);
   var pumpsArr = [];
   for(var i = 0; i < pumps.length; i++){
     var pump = pumps[i];
@@ -58,7 +59,11 @@ function pumpsToInstall(type, status){
       pumpsArr.push(pump);
     }
   }
-  getToDoByType(type).set(pumpsField, pumpsArr);
+  if(pumpsArr.length > 0){
+    checkForTodoByType(type);
+    getToDoByType(type).set(pumpsField, pumpsArr);
+  }
+  
 }
 
 checkDefects();
