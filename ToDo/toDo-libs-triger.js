@@ -50,12 +50,12 @@ function checkDefects(){
 }
 
 function pumpsToInstall(type, status){
-  checkForTodoByType(pumpsNeedInstallType);
+  checkForTodoByType(type);
   var pumpsArr = [];
   for(var i = 0; i < pumps.length; i++){
     var pump = pumps[i];
     if(pump.field("Статус") === status){
-      pumpsForInstalling.push(pump);
+      pumpsArr.push(pump);
     }
   }
   getToDoByType(type).set(pumpsField, pumpsArr);
