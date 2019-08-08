@@ -6,6 +6,7 @@ var defectsType = "Дефекты";
 var pumpsStatus = [
   {type: "Монтировать насосы", status: "Не монтирован после ремонта"},
   {type: "Насосы на склад", status: "Демонтирован для ремонта"},
+  {type: "Демонтировать насосы", status: "Неисправен"},
 ];
 
 var repairs = libByName("Ремонты").entries();
