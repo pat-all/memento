@@ -16,7 +16,6 @@ for(var i = 1; i < mesures.length; i++){
   var dif = currentMeterReading - prevMeterReading;
   var period = moment(mesures[i].field("Дата")).diff(moment(mesures[i - 1].field("Дата")), "days");
   var perDay = Math.round(dif / period);
-  var info = "Кубов: " + dif + " за " + period + "дней \nКубов/день: " + perDay;
-  mesures[i].set("Инфо", info);
-  mesures[i].set("test", perDay);  
+  var info = "Кубов: " + dif + " за " + period + " дней \nКубов/день: " + perDay;
+  mesures[i].set("Инфо", info); 
 }
