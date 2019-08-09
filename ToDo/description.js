@@ -32,7 +32,7 @@ switch (type) {
     result = result + "\nВсего: " + defects.length;
     break;
   default:
-    if (field("Подзадачи")) {
+    if (field("Подзадачи").length > 0) {
       var subToDos = field("Подзадачи");
       var done = 0;
       var notDone = 0;
