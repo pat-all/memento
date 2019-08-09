@@ -1,4 +1,7 @@
 var ToDos = [
+  {toDo: "Раскопка", subTodos: ["Заказать технику", "Наряд", "Службы", "Ограждения", "Доки на благоустройсво"]},
+  {toDo: "Благоустройство", subTodos: ["Планировка", "Подготовка корыта", "Щебенение", "Установка бордюров", "Укладка чернозема"]},
+  //sub Todos:
   {toDo: "Укладка плит", subTodos: ["Заказать технику", "Наряд"]},
   {toDo: "Засыпка", subTodos: ["Заказать технику", "Укладка плит", "Наряд"]},
   {toDo: "Подготовка корыта", subTodos: ["Заказать технику"]},
@@ -39,7 +42,8 @@ var ToDos = [
 ];
 
 var todoType = entry().field("Тип");
-var lib = lib();
+var toDosLib = lib();
+var subToDosLib = libByName("subToDo");
 var toDo = {};
 var subTodos = [];
 
@@ -51,13 +55,6 @@ function findToDoByName(toDoName){
     }
   }
   return toDo;
-}
-
-function ToDo() {
-  return {
-    name: "",
-    subTodos: [],
-  }
 }
 
 function findSubToDos(toDo){
@@ -84,7 +81,7 @@ function createSubtodos(toDo){
   if(subs.length > 0){
     for(var i = 0; i < subs.length; i++){
       var obj = {};
-      obj = lib.create({"Тип": subs[i].toDo});
+      obj = subToDosLib.create({"Тип": subs[i].toDo});
       objects.push(obj);
     }
   }
