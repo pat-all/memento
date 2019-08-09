@@ -29,7 +29,6 @@ switch (type) {
         
       }
     }
-
     result = result + "\nВсего: " + defects.length;
     break;
   default:
@@ -52,8 +51,9 @@ switch (type) {
       notDone = needed - done;
       if (notDone === 0) {
         result = "Выполнено: \u2714";
+      } else {
+        result = "Выполнено: " + done + " / " + needed + "; Осталось: " + notDone;
       }
-      result = "Выполнено: " + done + " / " + needed + "; Осталось: " + notDone;
     }
 }
 
