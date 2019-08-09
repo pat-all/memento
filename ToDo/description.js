@@ -8,6 +8,29 @@ switch (type) {
     var pumpsCount = field("Насосы").length;
     result = "Насосов: " + pumpsCount + " шт.";
     break;
+  case "Дефекты":
+    var defects = field(Дефекты);
+    var defectsByLvl = {};
+    for(var i = 0; i < defects.length; i++){
+      var level = defects[i].field("Уровень");
+      if(defectsByLvl[level] === undefined){
+        defects[level] = 1;
+      } else {
+        defects[level] = defects[level] + 1;
+      }
+    }
+    for(var i = 5; i > 0; i--){
+      if(defectsByLvl[i] !== undefined){
+        if(result.length > 0){
+          result = result + "\nУровень " + i + ": " + defectsByLvl[i] + ";"
+        } else {
+          result = "Уровень " + i + ": " + defectsByLvl[i] + ";"
+        }
+        
+      }
+    }
+
+    result = result + "\n Всего: " + defects.length;
 
   default:
     if (field("Подзадачи")) {
