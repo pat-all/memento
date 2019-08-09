@@ -22,9 +22,9 @@ switch (type) {
     for(var i = 5; i > 0; i--){
       if(defectsByLvl[i] !== undefined){
         if(result.length > 0){
-          result = result + "\nУровень " + i + ": " + defectsByLvl[i] + " дефектов;"
+          result = result + "\nУровень " + i + ": " + defectsByLvl[i] + " шт.;"
         } else {
-          result = "Уровень " + i + ": " + defectsByLvl[i] + " дефектов;"
+          result = "Уровень " + i + ": " + defectsByLvl[i] + " шт.;"
         }
         
       }
