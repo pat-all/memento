@@ -9,29 +9,29 @@ switch (type) {
     result = "Насосов: " + pumpsCount + " шт.";
     break;
   case "Дефекты":
-    var defects = field(Дефекты);
+    var defects = field("Дефекты");
     var defectsByLvl = {};
     for(var i = 0; i < defects.length; i++){
       var level = defects[i].field("Уровень");
       if(defectsByLvl[level] === undefined){
-        defects[level] = 1;
+        defectsByLvl[level] = 1;
       } else {
-        defects[level] = defects[level] + 1;
+        defectsByLvl[level] = defectsByLvl[level] + 1;
       }
     }
     for(var i = 5; i > 0; i--){
       if(defectsByLvl[i] !== undefined){
         if(result.length > 0){
-          result = result + "\nУровень " + i + ": " + defectsByLvl[i] + ";"
+          result = result + "\nУровень " + i + ": " + defectsByLvl[i] + " дефектов;"
         } else {
-          result = "Уровень " + i + ": " + defectsByLvl[i] + ";"
+          result = "Уровень " + i + ": " + defectsByLvl[i] + " дефектов;"
         }
         
       }
     }
 
-    result = result + "\n Всего: " + defects.length;
-
+    result = result + "\nВсего: " + defects.length;
+    break;
   default:
     if (field("Подзадачи")) {
       var subToDos = field("Подзадачи");
