@@ -1,5 +1,6 @@
 var type = field("Тип");
 var planed = field("Запланировать");
+var planDate = field("Запланировано");
 var name = "";
 
 switch (type) {
@@ -22,7 +23,7 @@ switch (type) {
 }
 
 if(planed){
-  name = "\u1F4C5 " + name;
+  name = name + "\u1F4C5 " + planDate;
 }
 
 name;

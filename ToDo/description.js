@@ -55,4 +55,9 @@ switch (type) {
     }
 }
 
+if(type === "Раскопка" || type === "Благоустройство"){
+  var excavation = field(type);
+  result = excavation.field("name") + "\n" + result;
+}
+
 result;
