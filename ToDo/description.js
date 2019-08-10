@@ -1,4 +1,6 @@
 var type = field("Тип");
+var planed = field("Запланировать");
+var planDate = field("Запланировано");
 var result = "";
 
 switch (type) {
@@ -54,9 +56,8 @@ switch (type) {
     }
 }
 
-if(type === "Раскопка" || type === "Благоустройство"){
-  var excavation = field(type);
-  result = excavation[0].field("name") + "\n" + result;
+if(planed){
+  result = "Запланировано на: " + moment(planDate).format("Do-MMMM-YYYY") + "\n" + result; 
 }
 
 result;

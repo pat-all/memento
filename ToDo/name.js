@@ -17,13 +17,17 @@ switch (type) {
     var defectsCount = field("Дефекты").length;
     name = type + " [" + defectsCount + "]";
     break;
+  case "Раскопка":
+    var excavation = field("Раскопка")[0];
+    name = type + ": " + excavation.field("name");
+    break;
+  case "Благоустройство":
+    var landscaping = field("Раскопка")[0];
+    name = type + ": " + landscaping.field("name");
+    break;
   default:
     name = type;
     break;
-}
-
-if(planed){
-  name = name + "\u1F4C5 " + moment(planDate, "DD-MMMM-YYYY");
 }
 
 name;
