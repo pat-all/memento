@@ -1,12 +1,11 @@
 var type = field("Тип");
+var planed = field("Запланировать");
 var result = "";
 
 switch (type) {
   case "Монтировать насосы":
   case "Насосы на склад":
   case "Демонтировать насосы":
-    var pumpsCount = field("Насосы").length;
-    result = "Насосов: " + pumpsCount + " шт.";
     break;
   case "Дефекты":
     var defects = field("Дефекты");
@@ -29,7 +28,6 @@ switch (type) {
         
       }
     }
-    result = result + "\nВсего: " + defects.length;
     break;
   default:
     if (field("Подзадачи").length > 0) {

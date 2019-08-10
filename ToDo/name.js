@@ -1,7 +1,14 @@
 var type = field("Тип");
+var planed = field("Запланировать");
 var name = "";
 
 switch (type) {
+  case "Монтировать насосы":
+  case "Насосы на склад":
+  case "Демонтировать насосы":
+    var pumpsCount = field("Насосы").length;
+    name = type + " [" + pumpsCount + "]";
+    break;
   case "Другое":
     name = field("Другое");
     break;
@@ -12,6 +19,10 @@ switch (type) {
   default:
     name = type;
     break;
+}
+
+if(planed){
+  name = "\u1F4C5 " + name;
 }
 
 name;
