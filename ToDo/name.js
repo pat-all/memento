@@ -23,7 +23,7 @@ switch (type) {
 }
 
 if(planed){
-  name = name + "\u1F4C5 " + planDate;
+  name = name + "\u1F4C5 " + moment(planDate, "DD-MMMM-YYYY");
 }
 
 name;

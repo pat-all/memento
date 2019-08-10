@@ -1,5 +1,4 @@
 var type = field("Тип");
-var planed = field("Запланировать");
 var result = "";
 
 switch (type) {
@@ -57,7 +56,7 @@ switch (type) {
 
 if(type === "Раскопка" || type === "Благоустройство"){
   var excavation = field(type);
-  result = excavation.field("name") + "\n" + result;
+  result = excavation[0].field("name") + "\n" + result;
 }
 
 result;
