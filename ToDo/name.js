@@ -22,7 +22,7 @@ switch (type) {
     name = type + ": " + excavation.field("name");
     break;
   case "Благоустройство":
-    var landscaping = field("Раскопка")[0];
+    var landscaping = field("Благоустройство")[0];
     name = type + ": " + landscaping.field("name");
     break;
   default:
