@@ -1,7 +1,9 @@
 var defectsField = "Дефекты";
 var pumpsField = "Насосы";
+var shutdownsField = "Отключения";
 
 var defectsType = "Дефекты";
+var shutdownsType = "Отключения";
 
 var pumpsStatus = [
   {type: "Монтировать насосы", status: "Не монтирован после ремонта"},
@@ -12,6 +14,7 @@ var pumpsStatus = [
 var repairs = libByName("Ремонты").entries();
 var defects = libByName("Дефекты").entries();
 var pumps = libByName("Насосы").entries();
+var shutdowns = libByName("Отключения");
 var todos = lib();
 
 function checkForTodoByType(type){
@@ -67,7 +70,26 @@ function pumpsToInstall(type, status){
   
 }
 
+function shutdownsCheck(){
+  //based on "Статус" field
+  var shutdownsArr = shutdowns.entries();
+  var toDoShutdowns = [];
+  for(var i = 0; i < shutdownsArr.length; i++){
+    var status = shutdownsArr[i].field("Статус");
+    if(status !== "#00C851"){
+      toDoShutdowns.push(shutdownsArr[i]);
+    }
+  }
+  if(toDoShutdowns.length > 0){
+    var type = "Отключения";
+    checkForTodoByType(type);
+    getToDoByType(type).set(shutdownsField, toDoShutdowns);
+  }
+}
+
+//executions
 checkDefects();
+shutdownsCheck();
 
 for(var i = 0; i < pumpsStatus.length; i++){
   var type = pumpsStatus[i].type;
