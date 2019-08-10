@@ -18,20 +18,20 @@ function checkForTodoByType(type){
   var todosArr = todos.entries();
   var exists = false;
   for(var i = 0; i < todosArr.length; i++){
-    var todoType = todosArr[i].field("Type");
+    var todoType = todosArr[i].field("Тип");
     if(type === todoType){
       exists = true;
     }
   }
   if(!exists){
-    todos.create({"Type": type});
+    todos.create({"Тип": type});
   }
 }
 
 function getToDoByType(type){
   var todosArr = todos.entries();
   for(var i = 0; i < todosArr.length; i++){
-    var todoType = todosArr[i].field("Type");
+    var todoType = todosArr[i].field("Тип");
     if(type === todoType){
       return todosArr[i];
     }
