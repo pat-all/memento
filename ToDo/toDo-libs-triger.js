@@ -104,6 +104,7 @@ function shutdownsCheck(){
 //executions
 checkDefects();
 shutdownsCheck();
+planedRepairsCheck();
 
 for(var i = 0; i < pumpsStatus.length; i++){
   var type = pumpsStatus[i].type;
