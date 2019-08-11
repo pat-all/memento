@@ -75,7 +75,8 @@ function planedRepairsCheck(){
   var todoPlanedRepairs = [];
   for(var i = 0; i < repairs.length; i++){
     var isPlaned = repairs[i].field("Плановый");
-    if(isPlaned){
+    var isDone = repairs[i].field("Завершён");
+    if(isPlaned && !isDone){
       todoPlanedRepairs.push(repairs[i]);
     }
   }
