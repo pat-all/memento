@@ -7,6 +7,7 @@ switch (type) {
   case "Монтировать насосы":
   case "Насосы на склад":
   case "Демонтировать насосы":
+  case "Отключения":
     break;
   case "Дефекты":
     var defects = field("Дефекты");

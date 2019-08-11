@@ -25,6 +25,10 @@ switch (type) {
     var landscaping = field("Благоустройство")[0];
     name = type + ": " + landscaping.field("name");
     break;
+  case "Отключения":
+    var shutdownsCount = field("Отключения").length;
+    name = type + " [" + shutdownsCount + "]";
+    break;
   default:
     name = type;
     break;
