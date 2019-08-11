@@ -18,7 +18,7 @@ for(var i = 1; i < mesures.length; i++){
   var period = moment(mesures[i].field("Дата")).diff(moment(mesures[i - 1].field("Дата")), "days");
   var perDay = Math.round(dif / period);
   var info = "Кубов: " + dif + " за " + period + " дней \nКубов/день: " + perDay;
-  var procents = perDay * 100 / avgPerDay;
+  var procents = Math.round(perDay * 100 / avgPerDay);
   mesures[i].set("Инфо", info);
   mesures[i].set("Относительно среднего", procents);
 }
