@@ -3,39 +3,38 @@ var planed = field("Запланировать");
 var planDate = field("Запланировано");
 var name = "";
 
-function showCounter(counter){
+function showCounter(fieldName){
+  var counter = field(fieldName).length;
   return " [" + counter + "]";
+}
+
+function showFirstEntryName(fieldName){
+  return " :" + field(fieldName)[0].field("name");
 }
 
 switch (type) {
   case "Монтировать насосы":
   case "Насосы на склад":
   case "Демонтировать насосы":
-    var pumpsCount = field("Насосы").length;
-    name = type + showCounter(pumpsCount);
+    name = type + showCounter("Насосы");
     break;
   case "Другое":
     name = field("Другое");
     break;
   case "Дефекты": 
-    var defectsCount = field("Дефекты").length;
-    name = type + showCounter(defectsCount);
+    name = type + showCounter("Дефекты");
     break;
   case "Раскопка":
-    var excavation = field("Раскопка")[0];
-    name = type + ": " + excavation.field("name");
+    name = type + showFirstEntryName("Раскопка");
     break;
   case "Благоустройство":
-    var landscaping = field("Благоустройство")[0];
-    name = type + ": " + landscaping.field("name");
+    name = type + showFirstEntryName("Благоустройство");
     break;
   case "Отключения":
-    var shutdownsCount = field("Отключения").length;
-    name = type + showCounter(shutdownsCount);
+    name = type + showCounter("Отключения");
     break;
   case "Плановые ремонты":
-      var planedRepairsCount = field("Ремонты").length;
-      name = type + showCounter(planedRepairsCount);    
+      name = type + showCounter("Ремонты");    
     break;
   default:
     name = type;
