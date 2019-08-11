@@ -1,9 +1,11 @@
 var defectsField = "Дефекты";
 var pumpsField = "Насосы";
 var shutdownsField = "Отключения";
+var repairsField = "Ремонты";
 
 var defectsType = "Дефекты";
 var shutdownsType = "Отключения";
+var planedRepairsType = "Плановые ремонты";
 
 var pumpsStatus = [
   {type: "Монтировать насосы", status: "Не монтирован после ремонта"},
@@ -67,7 +69,20 @@ function pumpsToInstall(type, status){
     checkForTodoByType(type);
     getToDoByType(type).set(pumpsField, pumpsArr);
   }
-  
+}
+
+function planedRepairsCheck(){
+  var todoPlanedRepairs = [];
+  for(var i = 0; i < repairs.length; i++){
+    var isPlaned = repairs[i].field("Плановый");
+    if(isPlaned){
+      todoPlanedRepairs.push(repairs[i]);
+    }
+  }
+  if(todoPlanedRepairs.length > 0){
+    checkForTodoByType(planedRepairsType);
+    getToDoByType(planedRepairsType).set(repairsField, todoPlanedRepairs);
+  }
 }
 
 function shutdownsCheck(){
@@ -81,9 +96,8 @@ function shutdownsCheck(){
     }
   }
   if(toDoShutdowns.length > 0){
-    var type = "Отключения";
-    checkForTodoByType(type);
-    getToDoByType(type).set(shutdownsField, toDoShutdowns);
+    checkForTodoByType(shutdownsType);
+    getToDoByType(shutdownsType).set(shutdownsField, toDoShutdowns);
   }
 }
 
