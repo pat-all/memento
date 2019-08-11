@@ -16,7 +16,7 @@ var pumpsStatus = [
 var repairs = libByName("Ремонты").entries();
 var defects = libByName("Дефекты").entries();
 var pumps = libByName("Насосы").entries();
-var shutdowns = libByName("Отключения");
+var shutdowns = libByName("Отключения").entries();
 var todos = lib();
 
 function checkForTodoByType(type){
@@ -88,12 +88,11 @@ function planedRepairsCheck(){
 
 function shutdownsCheck(){
   //based on "Статус" field
-  var shutdownsArr = shutdowns.entries();
   var toDoShutdowns = [];
-  for(var i = 0; i < shutdownsArr.length; i++){
-    var status = shutdownsArr[i].field("Статус");
+  for(var i = 0; i < shutdowns.length; i++){
+    var status = shutdowns[i].field("Статус");
     if(status !== "#00C851"){
-      toDoShutdowns.push(shutdownsArr[i]);
+      toDoShutdowns.push(shutdowns[i]);
     }
   }
   if(toDoShutdowns.length > 0){

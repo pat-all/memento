@@ -1,6 +1,5 @@
 var type = field("Тип");
 var planed = field("Запланировать");
-var planDate = field("Запланировано");
 var result = "";
 
 switch (type) {
@@ -58,6 +57,7 @@ switch (type) {
 }
 
 if(planed){
+  var planDate = field("Запланировано");
   result = "Запланировано на: " + moment(planDate).format("Do MMMM YYYY") + "\n" + result; 
 }
 
