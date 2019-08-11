@@ -29,6 +29,10 @@ switch (type) {
     var shutdownsCount = field("Отключения").length;
     name = type + " [" + shutdownsCount + "]";
     break;
+  case "Плановые ремонты":
+      var planedRepairsCount = field("Ремонты").length;
+      name = type + " [" + planedRepairsCount + "]";    
+    break;
   default:
     name = type;
     break;
