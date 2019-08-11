@@ -6,6 +6,7 @@ var name = "";
 /**
  * 
  * @param {string} fieldName - name of a linked entry field [array of entries], which count you want to show.
+ * @returns count in []
  */
 function showCounter(fieldName){
   var counter = field(fieldName).length;
@@ -14,7 +15,8 @@ function showCounter(fieldName){
 
 /**
  * 
- * @param {string} fieldName - name of a linked entry field [array of entries], show the first entry "name". 
+ * @param {string} fieldName - name of a linked entry field [array of entries] 
+ * @returns the first entry "name".
  */
 function showFirstEntryName(fieldName){
   return " :" + field(fieldName)[0].field("name");
