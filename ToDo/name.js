@@ -3,11 +3,19 @@ var planed = field("Запланировать");
 var planDate = field("Запланировано");
 var name = "";
 
+/**
+ * 
+ * @param {string} fieldName - name of a linked entry field [array of entries], which count you want to show.
+ */
 function showCounter(fieldName){
   var counter = field(fieldName).length;
   return " [" + counter + "]";
 }
 
+/**
+ * 
+ * @param {string} fieldName - name of a linked entry field [array of entries], show the first entry "name". 
+ */
 function showFirstEntryName(fieldName){
   return " :" + field(fieldName)[0].field("name");
 }
