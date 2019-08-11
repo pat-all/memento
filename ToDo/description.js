@@ -58,7 +58,7 @@ switch (type) {
 }
 
 if(planed){
-  result = "Запланировано на: " + moment(planDate).format("Do-MMMM-YYYY") + "\n" + result; 
+  result = "Запланировано на: " + moment(planDate).format("Do MMMM YYYY") + "\n" + result; 
 }
 
 result;
