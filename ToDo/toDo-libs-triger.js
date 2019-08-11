@@ -1,19 +1,15 @@
+// field names
 var defectsField = "Дефекты";
 var pumpsField = "Насосы";
 var shutdownsField = "Отключения";
 var repairsField = "Ремонты";
 
+//ToDo types
 var defectsType = "Дефекты";
 var shutdownsType = "Отключения";
 var planedRepairsType = "Плановые ремонты";
 
-//combinations of ToDos types (field("Тип")) and pumps (entry of "Насосы" library) status (field("Статус"))
-var pumpsStatus = [
-  {type: "Монтировать насосы", status: "Не монтирован после ремонта"},
-  {type: "Насосы на склад", status: "Демонтирован для ремонта"},
-  {type: "Демонтировать насосы", status: "Неисправен"},
-];
-
+//libraries
 var repairs = libByName("Ремонты").entries();
 var defects = libByName("Дефекты").entries();
 var pumps = libByName("Насосы").entries();
@@ -70,6 +66,13 @@ function checkDefects(){
     getToDoByType(defectsType).set(defectsField, todoDefects);
   }
 }
+
+//combinations of ToDos types (field("Тип")) and pumps (entry of "Насосы" library) status (field("Статус"))
+var pumpsStatus = [
+  {type: "Монтировать насосы", status: "Не монтирован после ремонта"},
+  {type: "Насосы на склад", status: "Демонтирован для ремонта"},
+  {type: "Демонтировать насосы", status: "Неисправен"},
+];
 
 /**
  * function checks "ToDo" library for ToDo whith a field("Тип"), and "Насосы" library by field("Статус").
