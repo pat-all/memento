@@ -1,4 +1,5 @@
 var mesures = entry().field("Показания");
+var avgPerDay = entry().field("Среднесуточный за всё время");
 
 /*mesures.sort(function(a, b){
   if(moment(a.field("Дата")).isBefore(moment(b.field("Дата")))){
@@ -17,5 +18,7 @@ for(var i = 1; i < mesures.length; i++){
   var period = moment(mesures[i].field("Дата")).diff(moment(mesures[i - 1].field("Дата")), "days");
   var perDay = Math.round(dif / period);
   var info = "Кубов: " + dif + " за " + period + " дней \nКубов/день: " + perDay;
-  mesures[i].set("Инфо", info); 
+  var procents = perDay * 100 / avgPerDay;
+  mesures[i].set("Инфо", info);
+  mesures[i].set("Относительно среднего", procents);
 }
