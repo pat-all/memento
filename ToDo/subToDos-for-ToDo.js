@@ -88,7 +88,7 @@ function transformToDo(todoName){
 }
 
 /**
- * Creates entries in subTodo library
+ * Creates entries in subTodo library and add them as subTodos for current ToDo.
  * @param {ToDo} toDo object: {toDo: {string}, subTodos: [{ToDo}]}
  */
 function createSubtodos(toDo){
@@ -96,16 +96,14 @@ function createSubtodos(toDo){
     exit();
   }
   subs = toDo.subTodos;
-  var objects = [];
+  var subsArr = [];
   if(subs.length > 0){
     for(var i = 0; i < subs.length; i++){
-      var obj = {};
-      obj = subToDosLib.create({"Тип": subs[i].toDo});
-      objects.push(obj);
+      var subTodo = subToDosLib.create({"Тип": subs[i].toDo});
+      subsArr.push(subTodo);
     }
   }
-  entry().set("Подзадачи", objects);
-  return objects;
+  entry().set("Подзадачи", subsArr);
 }
 
 var toDo = transformToDo(todoType);
