@@ -1,4 +1,5 @@
 var meters = libByName("Водомеры");
-
 var curMeterReading = entry();
-message(meters.linksTo(curMeterReading)[0].field("name"));
+var meterLap = meters.linksTo(curMeterReading)[0].field("Круг");
+
+curMeterReading.set("Круг", meterLap);
