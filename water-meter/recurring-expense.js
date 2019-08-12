@@ -12,8 +12,8 @@ var avgPerDay = entry().field("Среднесуточный за всё врем
 });*/
 
 for(var i = 1; i < mesures.length; i++){
-  var currentMeterReading = Number(mesures[i].field("Показания"));
-  var prevMeterReading = Number(mesures[i - 1].field("Показания"));
+  var currentMeterReading = Number(mesures[i].field("calculation"));
+  var prevMeterReading = Number(mesures[i - 1].field("calculation"));
   var dif = currentMeterReading - prevMeterReading;
   var period = moment(mesures[i].field("Дата")).diff(moment(mesures[i - 1].field("Дата")), "days");
   var perDay = Math.round(dif / period);
