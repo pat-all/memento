@@ -1,3 +1,11 @@
+var todoType = entry().field("Тип");
+if(todoType === "Другое"){
+  exit();
+}
+var toDosLib = lib();
+var subToDosLib = libByName("subToDo");
+var subTodos = [];
+
 var ToDos = [
   {toDo: "Раскопка", subTodos: ["Заказать технику", "Наряд", "Службы", "Ограждения", "Доки на благоустройсво"]},
   {toDo: "Благоустройство", subTodos: ["Планировка", "Подготовка корыта", "Щебенение", "Установка бордюров", "Укладка чернозема"]},
@@ -41,22 +49,24 @@ var ToDos = [
   {toDo: "Схема зел. зоны", subTodos: []},
 ];
 
-var todoType = entry().field("Тип");
-var toDosLib = lib();
-var subToDosLib = libByName("subToDo");
-var toDo = {};
-var subTodos = [];
-
+/**
+ * find ToDo in ToDos[] array
+ * @param {string} toDoName 
+ * @returns toDo object - element from ToDos[] array
+ */
 function findToDoByName(toDoName){
-  var toDo = {};
   for(var i = 0; i < ToDos.length; i++){
     if(toDoName === ToDos[i].toDo){
-      toDo = ToDos[i];
+      return ToDos[i];
     }
   }
-  return toDo;
 }
 
+/**
+ * Deep search for subTodos.
+ * @param {object: {toDo{string}, subTodos{[string]}}} toDo - element from ToDos array.
+ * @returns {ToDo} - object: {toDo: {string}, subTodos: [{ToDo}]}
+ */
 function findSubToDos(toDo){
   if(toDo.subTodos !== undefined && toDo.subTodos.length > 0){
     for(var i = 0; i < toDo.subTodos.length; i++){
@@ -67,11 +77,20 @@ function findSubToDos(toDo){
   return toDo;
 }
 
+/**
+ * Find ToDo in ToDos[] array by name and tranforms it to object {toDo: {string}, subTodos: [{ToDo}]};
+ * @param {string} todoName 
+ * @returns {ToDo} - object: {toDo: {string}, subTodos: [{ToDo}]}
+ */
 function transformToDo(todoName){
   var toDo = findToDoByName(todoName);
   return findSubToDos(toDo);
 }
 
+/**
+ * Creates entries in subTodo library
+ * @param {ToDo} toDo object: {toDo: {string}, subTodos: [{ToDo}]}
+ */
 function createSubtodos(toDo){
   if(toDo.subTodos.length === entry().field("Подзадачи").length){
     exit();
@@ -89,5 +108,5 @@ function createSubtodos(toDo){
   return objects;
 }
 
-toDo = transformToDo(todoType);
+var toDo = transformToDo(todoType);
 createSubtodos(toDo);
