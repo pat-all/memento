@@ -3,6 +3,7 @@ if(todoType === "Другое"){
   exit();
 }
 var toDosLib = lib();
+message(toDosLib.title);
 var subToDosLib = libByName("subToDo");
 var subTodos = [];
 

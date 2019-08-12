@@ -1,3 +1,10 @@
+var todoType = entry().field("Тип");
+if(todoType === "Другое"){
+  exit();
+}
+var lib = lib();
+var subTodos = [];
+
 var ToDos = [
   {toDo: "Укладка плит", subTodos: ["Заказать технику", "Наряд"]},
   {toDo: "Засыпка", subTodos: ["Заказать технику", "Укладка плит", "Наряд"]},
@@ -38,11 +45,6 @@ var ToDos = [
   {toDo: "Схема зел. зоны", subTodos: []},
 ];
 
-var todoType = entry().field("Тип");
-var lib = lib();
-var toDo = {};
-var subTodos = [];
-
 function findToDoByName(toDoName){
   var toDo = {};
   for(var i = 0; i < ToDos.length; i++){
@@ -51,13 +53,6 @@ function findToDoByName(toDoName){
     }
   }
   return toDo;
-}
-
-function ToDo() {
-  return {
-    name: "",
-    subTodos: [],
-  }
 }
 
 function findSubToDos(toDo){
@@ -89,7 +84,6 @@ function createSubtodos(toDo){
     }
   }
   entry().set("Подзадачи", objects);
-  return objects;
 }
 
 toDo = transformToDo(todoType);
